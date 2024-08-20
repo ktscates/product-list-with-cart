@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f0771ac2-e4de-408e-81cf-c87aa2b49fd0/deploy-status)](https://app.netlify.com/sites/ktscates-product-list-with-cart/deploys)
+![Github actions](https://github.com/ktscates/product-list-with-cart/actions/workflows/node.js.yml/badge.svg)
+
+
 # ProductListWithCart
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
