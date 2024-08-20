@@ -1,1 +1,9 @@
-<p>button-cart works!</p>
+<div class="flex justify-center -mt-5">
+  <button
+    class="bg-white flex justify-center text-rose900 font-semibold text-sm items-center gap-2 rounded-full border border-rose400 py-3 px-7"
+    (click)="onAddToCart()"
+  >
+    <app-icons iconType="cart"></app-icons>
+    {{ buttonText }}
+  </button>
+</div>

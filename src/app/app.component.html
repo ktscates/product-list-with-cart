@@ -1,1 +1,16 @@
-<div class="bg-yellow-300 min-h-screen">app component</div>
+<div class="bg-rose50">
+  <div
+    class="p-6 md:p-10 lg:pt-[88px] lg:px-[111px] max-w-[1440px] mx-auto font-primary"
+  >
+    <h1 class="text-rose900 font-extrabold text-[56px] text-left mb-8">
+      Desserts
+    </h1>
+    <div class="grid lg:grid-cols-5 grid-rows-1 gap-8">
+      <app-dessert-list
+        [desserts]="desserts"
+        class="lg:col-span-3"
+      ></app-dessert-list>
+      <app-cart class="lg:col-span-2"></app-cart>
+    </div>
+  </div>
+</div>
