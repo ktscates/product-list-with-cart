@@ -34,7 +34,6 @@ export class ButtonCartComponent implements OnInit {
     }
     this.storeService.addToCart(this.dessertId);
     this.isInCart = true;
-    this.quantity++;
   }
 
   increment() {
