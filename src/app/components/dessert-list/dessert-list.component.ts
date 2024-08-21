@@ -12,4 +12,6 @@ import { DessertCardComponent } from '../dessert-card/dessert-card.component';
 })
 export class DessertListComponent {
   @Input() desserts: Dessert[] = [];
+
+  // console.log('Desserts:', this.desserts);
 }

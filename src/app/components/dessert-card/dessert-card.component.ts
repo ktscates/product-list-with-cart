@@ -10,6 +10,7 @@ import { ButtonCartComponent } from '../button-cart/button-cart.component';
   styleUrl: './dessert-card.component.css',
 })
 export class DessertCardComponent {
+  @Input() id!: string;
   @Input() imageUrl!: string;
   @Input() category!: string;
   @Input() name!: string;

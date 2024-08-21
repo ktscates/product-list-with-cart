@@ -1,4 +1,5 @@
 export interface Dessert {
+  id: string;
   image: {
     thumbnail: string;
     mobile: string;
