@@ -1,6 +1,6 @@
 <button
   class="bg-red rounded-full w-full mt-6 text-white font-semibold text-base py-5"
-  (click)="onAddToModal()"
+  (click)="isModalOpen ? onStartNewOrder() : onAddToModal()"
 >
-  {{ buttonText }}
+  {{ isModalOpen ? "Start a new order" : buttonText }}
 </button>

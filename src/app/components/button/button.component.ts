@@ -10,9 +10,20 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() itemId!: number;
   @Input() buttonText: string = 'Confirm the order';
+  @Input() isModalOpen: boolean = false;
   @Output() addToCart = new EventEmitter<number>();
+  @Output() triggerModal = new EventEmitter<void>();
+  @Output() startNewOrder = new EventEmitter<void>();
 
   onAddToModal() {
-    this.addToCart.emit(this.itemId);
+    if (this.isModalOpen) {
+      this.triggerModal.emit();
+    } else {
+      this.addToCart.emit(this.itemId);
+    }
+  }
+
+  onStartNewOrder() {
+    this.startNewOrder.emit();
   }
 }

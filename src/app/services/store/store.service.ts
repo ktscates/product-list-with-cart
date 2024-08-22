@@ -100,4 +100,9 @@ export class StoreService {
   closeModal(): void {
     this.modalOpen.next(false);
   }
+
+  resetOrder(): void {
+    this.cart.next({});
+    this.closeModal();
+  }
 }
