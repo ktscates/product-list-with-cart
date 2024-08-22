@@ -1,1 +1,6 @@
-<p>button works!</p>
+<button
+  class="bg-red rounded-full w-full mt-6 text-white font-semibold text-base py-5"
+  (click)="isModalOpen ? onStartNewOrder() : onAddToModal()"
+>
+  {{ isModalOpen ? "Start a new order" : buttonText }}
+</button>

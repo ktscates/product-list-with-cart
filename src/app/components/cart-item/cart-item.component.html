@@ -1,0 +1,15 @@
+<div class="flex justify-between items-center py-4 border-b border-rose100">
+  <div class="">
+    <div class="font-semibold text-rose900 text-sm mb-2">{{ itemName }}</div>
+    <div class="flex items-center gap-4">
+      <span class="text-red font-semibold text-sm">{{ quantity }}x</span>
+      <span class="text-rose500 text-sm"> {{ unitPrice | currency }}</span>
+      <span class="text-rose500 text-sm font-semibold">{{
+        totalPrice | currency
+      }}</span>
+    </div>
+  </div>
+  <button (click)="onRemoveItem()" class="text-gray-500 hover:text-red-500">
+    <app-icons iconType="delete-default"></app-icons>
+  </button>
+</div>

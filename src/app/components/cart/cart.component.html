@@ -1,0 +1,39 @@
+<div class="bg-white w-full lg:-mt-20 p-6 rounded-xl shadow">
+  <h1 class="text-2xl text-red font-bold mb-6">
+    Your Cart ({{ cartItems.length }})
+  </h1>
+
+  @if (cartItems.length === 0) {
+  <div class="flex flex-col justify-center items-center gap-8 p-4">
+    <img src="../../../assets/Empty Illustration.png" alt="empty cart" />
+    <p class="text-rose500 text-center font-bold text-sm">
+      Your added items will appear here
+    </p>
+  </div>
+  } @for (cartItem of cartItems ; track $index) {
+  <app-cart-item
+    [itemName]="cartItem.dessert.name"
+    [quantity]="cartItem.quantity"
+    [unitPrice]="cartItem.dessert.price"
+    (removeItem)="removeItem(cartItem.dessert.id)"
+    >></app-cart-item
+  >
+  } @if (cartItems.length > 0) {
+  <div class="flex justify-between items-center py-6">
+    <p class="text-rose900 text-sm">Order Total</p>
+    <h1 class="text-rose900 font-bold text-2xl">
+      {{ totalCost | currency }}
+    </h1>
+  </div>
+  } @if(cartItems.length > 0){
+  <div class="flex justify-center items-center bg-rose50 rounded-lg py-4">
+    <app-icons iconType="tree"></app-icons>
+    <p class="text-sm text-rose900">
+      This is a <strong>carbon-neutral</strong> delivery
+    </p>
+  </div>
+
+  } @if (cartItems.length > 0) {
+  <app-button (addToCart)="confirmOrder()"></app-button>
+  }
+</div>
