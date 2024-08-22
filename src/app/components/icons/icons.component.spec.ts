@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IconsComponent } from './icons.component';
 
 describe('IconsComponent', () => {
@@ -8,10 +7,9 @@ describe('IconsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IconsComponent]
-    })
-    .compileComponents();
-    
+      imports: [IconsComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(IconsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +17,11 @@ describe('IconsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should accept input property iconType', () => {
+    component.iconType = 'test-icon';
+    fixture.detectChanges();
+    expect(component.iconType).toBe('test-icon');
   });
 });

@@ -8,10 +8,9 @@ describe('CartItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CartItemComponent]
-    })
-    .compileComponents();
-    
+      imports: [CartItemComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CartItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,11 @@ describe('CartItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit removeItem event', () => {
+    jest.spyOn(component.removeItem, 'emit');
+    component.onRemoveItem();
+    expect(component.removeItem.emit).toHaveBeenCalled();
   });
 });

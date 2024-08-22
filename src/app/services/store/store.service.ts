@@ -27,9 +27,7 @@ export class StoreService {
     this.http
       .get<Dessert[]>(this.dataUrl)
       .pipe(
-        catchError((error) => {
-          return of([]);
-        })
+        catchError(() => of([]))
       )
       .subscribe((desserts) => {
         this.desserts.next(desserts);
