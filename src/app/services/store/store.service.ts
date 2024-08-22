@@ -26,9 +26,7 @@ export class StoreService {
   private loadDesserts(): void {
     this.http
       .get<Dessert[]>(this.dataUrl)
-      .pipe(
-        catchError(() => of([]))
-      )
+      .pipe(catchError(() => of([])))
       .subscribe((desserts) => {
         this.desserts.next(desserts);
       });
@@ -63,7 +61,6 @@ export class StoreService {
 
   addToCart(dessertId: string): void {
     if (!dessertId) {
-      console.error('Invalid dessertId:', dessertId);
       return;
     }
     const currentCart = this.cart.value;
