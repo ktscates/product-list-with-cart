@@ -37,4 +37,8 @@ export class CartComponent implements OnInit {
   confirmOrder(): void {
     this.storeService.openModal();
   }
+
+  removeItem(dessertId: string) {
+    this.storeService.removeFromCart(dessertId);
+  }
 }

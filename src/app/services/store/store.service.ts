@@ -105,4 +105,12 @@ export class StoreService {
     this.cart.next({});
     this.closeModal();
   }
+
+  removeFromCart(dessertId: string): void {
+    const currentCart = this.cart.value;
+    if (currentCart[dessertId]) {
+      delete currentCart[dessertId];
+      this.cart.next(currentCart);
+    }
+  }
 }

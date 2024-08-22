@@ -18,4 +18,8 @@ export class CartItemComponent {
   get totalPrice(): number {
     return this.quantity * this.unitPrice;
   }
+
+  onRemoveItem() {
+    this.removeItem.emit();
+  }
 }

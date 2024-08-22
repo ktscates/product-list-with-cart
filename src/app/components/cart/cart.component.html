@@ -15,6 +15,7 @@
     [itemName]="cartItem.dessert.name"
     [quantity]="cartItem.quantity"
     [unitPrice]="cartItem.dessert.price"
+    (removeItem)="removeItem(cartItem.dessert.id)"
     >></app-cart-item
   >
   } @if (cartItems.length > 0) {
