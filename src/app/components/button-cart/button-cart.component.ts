@@ -19,9 +19,7 @@ export class ButtonCartComponent implements OnInit {
   constructor(private storeService: StoreService) {}
 
   ngOnInit() {
-    console.log('Dessert ID in ButtonCartComponent:', this.dessertId);
     this.storeService.getCart().subscribe((cart) => {
-      console.log('Cart in ButtonCartComponent:', cart);
       this.quantity = cart[this.dessertId] || 0;
       this.isInCart = this.quantity > 0;
     });
@@ -29,7 +27,6 @@ export class ButtonCartComponent implements OnInit {
 
   addToCart() {
     if (!this.dessertId) {
-      console.error('No dessertId provided');
       return;
     }
     this.storeService.addToCart(this.dessertId);

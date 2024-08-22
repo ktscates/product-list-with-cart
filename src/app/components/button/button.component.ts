@@ -12,7 +12,7 @@ export class ButtonComponent {
   @Input() buttonText: string = 'Confirm the order';
   @Output() addToCart = new EventEmitter<number>();
 
-  onAddToCart() {
+  onAddToModal() {
     this.addToCart.emit(this.itemId);
   }
 }

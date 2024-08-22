@@ -4,11 +4,12 @@ import { Dessert } from './models/dessert';
 import { StoreService } from './services/store/store.service';
 import { DessertListComponent } from './components/dessert-list/dessert-list.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DessertListComponent, CartComponent],
+  imports: [RouterOutlet, DessertListComponent, CartComponent, ModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -21,7 +22,6 @@ export class AppComponent {
   ngOnInit(): void {
     this.storeService.getDesserts().subscribe((data) => {
       this.desserts = data;
-      console.log('data', this.desserts);
     });
   }
 }

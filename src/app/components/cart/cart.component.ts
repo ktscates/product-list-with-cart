@@ -22,7 +22,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeService.getCartWithDetails().subscribe((cartItems) => {
-      console.log('Cart items with details:', cartItems); // Check cart items with details
       this.cartItems = cartItems;
       this.calculateTotalCost();
     });
@@ -33,5 +32,9 @@ export class CartComponent implements OnInit {
       (total, item) => total + item.dessert.price * item.quantity,
       0
     );
+  }
+
+  confirmOrder(): void {
+    this.storeService.openModal();
   }
 }

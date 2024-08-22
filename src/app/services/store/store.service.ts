@@ -17,9 +17,10 @@ export class StoreService {
   private dataUrl = 'assets/data.json';
   private cart = new BehaviorSubject<{ [id: string]: number }>({});
   private desserts = new BehaviorSubject<Dessert[]>([]);
+  private modalOpen = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    this.loadDesserts(); // Load desserts on initialization
+    this.loadDesserts();
   }
 
   private loadDesserts(): void {
@@ -27,12 +28,10 @@ export class StoreService {
       .get<Dessert[]>(this.dataUrl)
       .pipe(
         catchError((error) => {
-          console.error('Error fetching desserts', error);
-          return of([]); // Return an empty array in case of error
+          return of([]);
         })
       )
       .subscribe((desserts) => {
-        console.log('Desserts loaded:', desserts); // Check if desserts are loaded correctly
         this.desserts.next(desserts);
       });
   }
@@ -51,12 +50,9 @@ export class StoreService {
       this.desserts.asObservable(),
     ]).pipe(
       map(([cart, desserts]) => {
-        console.log('Cart:', cart); // Check cart data
-        console.log('Desserts:', desserts); // Check desserts data
         return Object.keys(cart)
           .map((id) => {
             const dessert = desserts.find((d) => d.id === id);
-            console.log('Finding dessert for ID:', id, dessert); // Check each found dessert
             return dessert ? { dessert, quantity: cart[id] } : null;
           })
           .filter((item) => item !== null) as {
@@ -75,7 +71,6 @@ export class StoreService {
     const currentCart = this.cart.value;
     currentCart[dessertId] = (currentCart[dessertId] || 0) + 1;
     this.cart.next(currentCart);
-    console.log('Cart after add:', currentCart);
   }
 
   increment(dessertId: string): void {
@@ -83,7 +78,6 @@ export class StoreService {
     if (currentCart[dessertId]) {
       currentCart[dessertId]++;
       this.cart.next(currentCart);
-      console.log('Cart updated after increment:', this.cart.value);
     }
   }
 
@@ -95,6 +89,15 @@ export class StoreService {
       delete currentCart[dessertId];
     }
     this.cart.next(currentCart);
-    console.log('Cart updated after decrement:', this.cart.value);
+  }
+
+  isModalOpen$ = this.modalOpen.asObservable();
+
+  openModal(): void {
+    this.modalOpen.next(true);
+  }
+
+  closeModal(): void {
+    this.modalOpen.next(false);
   }
 }

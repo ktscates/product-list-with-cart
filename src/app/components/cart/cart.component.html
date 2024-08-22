@@ -31,7 +31,8 @@
       This is a <strong>carbon-neutral</strong> delivery
     </p>
   </div>
+
   } @if (cartItems.length > 0) {
-  <app-button></app-button>
+  <app-button (addToCart)="confirmOrder()"></app-button>
   }
 </div>
