@@ -2,30 +2,80 @@
 ![Github actions](https://github.com/ktscates/product-list-with-cart/actions/workflows/node.js.yml/badge.svg)
 
 
-# ProductListWithCart
+# Product List with Cart
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+## Table of Contents
 
-## Development server
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Running the App](#running-the-app)
+- [Cart Management](#cart-management)
+  - [Adding Products to Cart](#adding-products-to-cart)
+  - [Removing Products from Cart](#removing-products-from-cart)
+  - [Calculating Total](#calculating-total)
+- [Live Link](#live-link)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Introduction
 
-## Code scaffolding
+This application is a product listing and cart system built with Angular. The app allows users to browse through a list of desserts, add them to a cart, and review their selected items before confirming an order. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+- Display a list of desserts with images, categories, names, and prices.
+- Add products to the cart using the quantity selection.
+- Remove products from the cart.
+- View a summary of the cart with the total cost.
+- Mobile-friendly modal for cart review and order confirmation.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
 
-## Running unit tests
+- **Angular**
+- **TailwindCSS**
+- **RxJS**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Getting Started
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone the repository**:
 
-## Further help
+   ```bash
+   git clone https://github.com/ktscates/product-list-with-cart.git
+   cd product-list-with-cart
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+### Running the App
+
+    ```bash
+    ng serve
+    ```
+    Open your browser and navigate to `http://localhost:4200/`.
+
+## Cart Management
+
+### Adding Products to Cart
+
+Users can add products to the cart by clicking the "Add to Cart" button on each product card. The cart quantity is updated accordingly, and the user can see the updated items in the cart.
+
+### Removing Products from the Cart
+
+Products can be removed from the cart by clicking the delete icon next to each item in the cart. This updates the cart contents and recalculates the total cost.
+
+### Calculating Total
+
+The total cost of the cart is calculated dynamically based on the items added to the cart and their quantities. The total is displayed at the bottom of the cart.
+
+
+## Live Link
+
+You can access the deployed application at [Product List with Cart App](https://ktscates-product-list-with-cart.netlify.app/).
+
