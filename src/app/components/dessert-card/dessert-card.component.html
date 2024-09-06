@@ -1,10 +1,6 @@
-<div class="bg-transparent overflow-hidden">
-  <img
-    [src]="imageUrl"
-    [alt]="name"
-    class="w-full h-64 object-cover rounded-lg"
-  />
-  <app-button-cart [dessertId]="id" [unitPrice]="price"></app-button-cart>
+<div class="bg-white overflow-hidden rounded-xl shadow-lg p-4">
+  <img [src]="imageUrl" [alt]="name" class="w-full h-64 object-contain" />
+  <app-button-cart [productId]="id" [unitPrice]="price"></app-button-cart>
   <div class="py-4">
     <p class="text-sm text-rose500 font-normal">{{ category }}</p>
     <h3 class="text-base font-semibold text-rose900">{{ name }}</h3>

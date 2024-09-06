@@ -10,9 +10,11 @@ import { ButtonCartComponent } from '../button-cart/button-cart.component';
   styleUrl: './dessert-card.component.css',
 })
 export class DessertCardComponent {
-  @Input() id!: string;
+  @Input() id!: number;
   @Input() imageUrl!: string;
   @Input() category!: string;
   @Input() name!: string;
   @Input() price!: number;
+  @Input() description!: string;
+  @Input() rating!: object;
 }

@@ -3,9 +3,11 @@ import { CartItemComponent } from '../cart-item/cart-item.component';
 import { IconsComponent } from '../icons/icons.component';
 import { ButtonComponent } from '../button/button.component';
 import { StoreService } from '../../services/store/store.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Dessert } from '../../models/dessert';
 import { CommonModule } from '@angular/common';
+import { Product } from '../../models/product';
+import { CartServiceService } from '../../services/cart/cart-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,30 +17,30 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
-  cartItems: { dessert: Dessert; quantity: number }[] = [];
-  totalCost: number = 0;
+  cartItems$!: Observable<{ product: Product; quantity: number }[]>;
+  totalCost$!: Observable<number>;
 
-  constructor(private storeService: StoreService) {}
+  constructor(private cartService: CartServiceService) {}
 
   ngOnInit(): void {
-    this.storeService.getCartWithDetails().subscribe((cartItems) => {
-      this.cartItems = cartItems;
-      this.calculateTotalCost();
-    });
-  }
+    this.cartItems$ = this.cartService.getCartWithDetails();
 
-  private calculateTotalCost(): void {
-    this.totalCost = this.cartItems.reduce(
-      (total, item) => total + item.dessert.price * item.quantity,
-      0
+    // Calculate the total cost using the observable and map function
+    this.totalCost$ = this.cartItems$.pipe(
+      map((cartItems) =>
+        cartItems.reduce(
+          (total, item) => total + item.product.price * item.quantity,
+          0
+        )
+      )
     );
   }
 
   confirmOrder(): void {
-    this.storeService.openModal();
+    this.cartService.openModal();
   }
 
-  removeItem(dessertId: string) {
-    this.storeService.removeFromCart(dessertId);
+  removeItem(productId: number) {
+    this.cartService.removeFromCart(productId);
   }
 }

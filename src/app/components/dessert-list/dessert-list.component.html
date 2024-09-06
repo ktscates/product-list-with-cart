@@ -1,11 +1,13 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-  @for (dessert of desserts; track $index) {
+  @for (product of products$ | async; track $index) {
   <app-dessert-card
-    [id]="dessert.id"
-    [imageUrl]="dessert.image.desktop"
-    [category]="dessert.category"
-    [name]="dessert.name"
-    [price]="dessert.price"
+    [id]="product.id"
+    [imageUrl]="product.image"
+    [category]="product.category"
+    [description]="product.description"
+    [title]="product.title"
+    [price]="product.price"
+    [rating]="product.rating"
   ></app-dessert-card>
   }
 </div>

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store/store.service';
 import { IconsComponent } from '../icons/icons.component';
+import { CartServiceService } from '../../services/cart/cart-service.service';
 
 @Component({
   selector: 'app-button-cart',
@@ -12,34 +13,43 @@ import { IconsComponent } from '../icons/icons.component';
 export class ButtonCartComponent implements OnInit {
   @Input() dessertId!: string;
   @Input() unitPrice!: number;
+  @Input() productId!: number;
   quantity: number = 0;
   buttonText: string = 'Add to Cart';
   isInCart: boolean = false;
 
-  constructor(private storeService: StoreService) {}
+  constructor(
+    private storeService: StoreService,
+    private cartService: CartServiceService
+  ) {}
 
   ngOnInit() {
-    this.storeService.getCart().subscribe((cart) => {
-      this.quantity = cart[this.dessertId] || 0;
+    this.cartService.getCart().subscribe((cart) => {
+      this.quantity = cart[this.productId] || 0;
       this.isInCart = this.quantity > 0;
     });
+
+    // this.cartService.getCart().subscribe((cart) => {
+    //   this.quantity = cart[this.productId] || 0;
+    //   this.isInCart = this.quantity > 0;
+    // });
   }
 
   addToCart() {
-    if (!this.dessertId) {
+    if (!this.productId) {
       return;
     }
-    this.storeService.addToCart(this.dessertId);
+    this.cartService.addToCart(this.productId);
     this.isInCart = true;
   }
 
   increment() {
-    this.storeService.increment(this.dessertId);
+    this.cartService.increment(this.productId);
     this.quantity++;
   }
 
   decrement() {
-    this.storeService.decrement(this.dessertId);
+    this.cartService.decrement(this.productId);
     this.quantity--;
     if (this.quantity <= 0) {
       this.isInCart = false;

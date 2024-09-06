@@ -7,6 +7,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Product } from './models/product';
+import { ProductServiceService } from './services/product/product-service.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -23,12 +25,19 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'product-list-with-cart';
   desserts: Dessert[] = [];
+  products: Product[] = [];
 
-  constructor(private storeService: StoreService) {}
+  constructor(
+    private storeService: StoreService,
+    private productService: ProductServiceService
+  ) {}
 
   ngOnInit(): void {
-    this.storeService.getDesserts().subscribe((data) => {
-      this.desserts = data;
+    // this.storeService.getDesserts().subscribe((data) => {
+    //   this.desserts = data;
+    // });
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
     });
   }
 }
